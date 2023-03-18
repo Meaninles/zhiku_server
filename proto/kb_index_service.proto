@@ -1,0 +1,22 @@
+syntax = "proto3";
+option go_package = "./;proto";
+
+service KBIndexService {
+  rpc Create (KBIndexRequest) returns (KBIndexReply) {}
+  rpc Modify (KBIndexRequest) returns (KBIndexReply) {}
+  rpc Delete (KBIndexRequest) returns (KBIndexReply) {}
+}
+
+message KBIndexRequest {
+  string name = 1;
+  string url = 2;
+  string tag = 3;
+  string key = 4;
+  string description = 5;
+  uint32 indexed = 6;
+  string kb_id = 7;
+}
+
+message KBIndexReply {
+  bool ok = 1;
+}
