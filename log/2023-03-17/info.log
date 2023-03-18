@@ -1,0 +1,8 @@
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/17 - 23:48:57.660	[34minfo[0m	/Users/diode/zhiku/gin-vue-admin/server/initialize/gorm.go:59	register table success
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/17 - 23:48:57.661	[34minfo[0m	/Users/diode/zhiku/gin-vue-admin/server/initialize/router.go:25	register swagger handler
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/17 - 23:48:57.668	[34minfo[0m	/Users/diode/zhiku/gin-vue-admin/server/initialize/router.go:86	router register success
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/17 - 23:48:57.668	[34minfo[0m	/Users/diode/zhiku/gin-vue-admin/server/core/server.go:38	server run success on 	{"address": ":8888"}
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/17 - 23:50:11.838	[34minfo[0m	/Users/diode/zhiku/gin-vue-admin/server/initialize/gorm.go:59	register table success
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/17 - 23:50:11.838	[34minfo[0m	/Users/diode/zhiku/gin-vue-admin/server/initialize/router.go:25	register swagger handler
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/17 - 23:50:11.843	[34minfo[0m	/Users/diode/zhiku/gin-vue-admin/server/initialize/router.go:86	router register success
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/17 - 23:50:11.843	[34minfo[0m	/Users/diode/zhiku/gin-vue-admin/server/core/server.go:38	server run success on 	{"address": ":8888"}
