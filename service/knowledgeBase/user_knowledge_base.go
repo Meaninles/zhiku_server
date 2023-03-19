@@ -1,13 +1,10 @@
 package knowledgeBase
 
 import (
-	"context"
-	"fmt"
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/knowledgeBase"
 	knowledgeBaseReq "github.com/flipped-aurora/gin-vue-admin/server/model/knowledgeBase/request"
-	pb "github.com/flipped-aurora/gin-vue-admin/server/proto"
 	"gorm.io/gorm"
 )
 
@@ -17,22 +14,6 @@ type UserKnowledgeBaseService struct {
 // CreateUserKnowledgeBase 创建UserKnowledgeBase记录
 // Author [piexlmax](https://github.com/piexlmax)
 func (userKnowledgeBaseService *UserKnowledgeBaseService) CreateUserKnowledgeBase(userKnowledgeBase knowledgeBase.UserKnowledgeBase) (err error) {
-	res, err := global.GVA_KBINDEX_RPC_CLIENT.Create(context.Background(), &pb.KBIndexRequest{
-		Name:        "1",
-		Url:         "1",
-		Tag:         "1",
-		Key:         "1",
-		Description: "1",
-		Indexed:     0,
-		KbId:        "1",
-	})
-	if err != nil {
-		fmt.Println("怎么了？？？？》》》》》》》》")
-		return err
-	}
-	fmt.Println("o不ok>>>>>")
-	fmt.Println(res.Ok)
-
 	err = global.GVA_DB.Create(&userKnowledgeBase).Error
 	return err
 }

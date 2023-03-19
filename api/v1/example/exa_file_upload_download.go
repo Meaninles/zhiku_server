@@ -133,5 +133,6 @@ func (b *FileUploadAndDownloadApi) GetFileList(c *gin.Context) {
 		Total:    total,
 		Page:     pageInfo.Page,
 		PageSize: pageInfo.PageSize,
+		KBID:     pageInfo.KBID,
 	}, "获取成功", c)
 }

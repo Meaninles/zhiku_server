@@ -2,6 +2,7 @@ package upload
 
 import (
 	"errors"
+	"fmt"
 	"io"
 	"mime/multipart"
 	"os"
@@ -101,7 +102,10 @@ func (*Local) UploadFileWithKBID(file *multipart.FileHeader, kbId string) (strin
 	}
 	// 拼接路径和文件名
 	p := global.GVA_CONFIG.Local.StorePath + "/" + filename
-	filepath := global.GVA_CONFIG.Local.Path + "/" + filename
+	filepath := global.CURRENT_WORK_DIR + "/" + global.GVA_CONFIG.Local.Path + "/" + filename
+	fmt.Println("开始表演》》》》》》》》》")
+	fmt.Println(p)
+	fmt.Println(filepath)
 
 	f, openError := file.Open() // 读取文件
 	if openError != nil {

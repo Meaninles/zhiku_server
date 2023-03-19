@@ -1,8 +1,11 @@
 package example
 
 import (
+	"context"
 	"errors"
 	"fmt"
+	pb "github.com/flipped-aurora/gin-vue-admin/server/proto"
+	"go.uber.org/zap"
 	"mime/multipart"
 	"strings"
 
@@ -70,10 +73,11 @@ func (e *FileUploadAndDownloadService) GetFileRecordInfoList(info request.PageIn
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
 	keyword := info.Keyword
-	db := global.GVA_DB.Model(&example.ExaFileUploadAndDownload{})
+	kbId := info.KBID
+	db := global.GVA_DB.Model(&example.ExaFileUploadAndDownload{}).Where("kb_id = ?", kbId)
 	var fileLists []example.ExaFileUploadAndDownload
 	if len(keyword) > 0 {
-		db = db.Where("name LIKE ?", "%"+keyword+"%")
+		db = db.Where("name LIKE ?", "%"+keyword+"%").Where("kb_id = ?", kbId)
 	}
 	err = db.Count(&total).Error
 	if err != nil {
@@ -128,8 +132,23 @@ func (e *FileUploadAndDownloadService) UploadFileWithDescription(header *multipa
 		}
 		err := e.Upload(f)
 		if err != nil {
-			// TODO 传递给python的llama_index服务做索引，索引成功后将indexed改为1，前端还需要做是否索引的展示
-
+			global.GVA_LOG.Error("上传文件失败", zap.Error(err))
+			return f, err
+		}
+		// TODO 传递给python的llama_index服务做索引，索引成功后将indexed改为1，前端还需要做是否索引的展示
+		_, err = global.KBINDEX_RPC_CLIENT.Create(context.Background(), &pb.KBIndexRequest{
+			Name:        f.Name,
+			Url:         f.Url,
+			Tag:         f.Tag,
+			Key:         f.Key,
+			Description: f.Description,
+			Indexed:     uint32(f.Indexed),
+			KbId:        f.KBID,
+			Id:          uint32(f.ID),
+		})
+		if err != nil {
+			global.GVA_LOG.Error("rpc错误", zap.Error(err))
+			return f, err
 		}
 		return f, err
 	}

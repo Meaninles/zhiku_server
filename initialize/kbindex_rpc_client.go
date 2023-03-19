@@ -16,5 +16,5 @@ func KBINDEX_RPC_CLIENT() {
 	if err != nil {
 		global.GVA_LOG.Fatal("无法连接到rpc", zap.Error(err))
 	}
-	global.GVA_KBINDEX_RPC_CLIENT = pb.NewKBIndexServiceClient(conn)
+	global.KBINDEX_RPC_CLIENT = pb.NewKBIndexServiceClient(conn)
 }

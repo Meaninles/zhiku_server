@@ -15,6 +15,7 @@ message KBIndexRequest {
   string description = 5;
   uint32 indexed = 6;
   string kb_id = 7;
+  uint32 id = 8;
 }
 
 message KBIndexReply {
