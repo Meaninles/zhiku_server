@@ -82,6 +82,13 @@ func Routers() *gin.Engine {
 		knowledgeBaseRouter := router.RouterGroupApp.KnowledgeBase
 		knowledgeBaseRouter.InitUserKnowledgeBaseRouter(PrivateGroup)
 	}
+	{
+
+	}
+	{
+		chatRouter := router.RouterGroupApp.Chat
+		chatRouter.InitMyChatsRouter(PrivateGroup)
+	}
 
 	global.GVA_LOG.Info("router register success")
 	return Router

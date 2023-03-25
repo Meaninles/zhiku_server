@@ -12,6 +12,7 @@ import (
 
 	"github.com/flipped-aurora/gin-vue-admin/server/model/setting"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/knowledgeBase"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/chat"
 )
 
 func Gorm() *gorm.DB {
@@ -50,7 +51,7 @@ func RegisterTables() {
 		example.ExaFile{},
 		example.ExaCustomer{},
 		example.ExaFileChunk{},
-		example.ExaFileUploadAndDownload{}, setting.ApiKeySetting{}, knowledgeBase.UserKnowledgeBase{},
+		example.ExaFileUploadAndDownload{}, setting.ApiKeySetting{}, knowledgeBase.UserKnowledgeBase{}, chat.MyChats{},
 	)
 	if err != nil {
 		global.GVA_LOG.Error("register table failed", zap.Error(err))

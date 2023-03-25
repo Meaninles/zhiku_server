@@ -1,6 +1,7 @@
 package router
 
 import (
+	"github.com/flipped-aurora/gin-vue-admin/server/router/chat"
 	"github.com/flipped-aurora/gin-vue-admin/server/router/example"
 	"github.com/flipped-aurora/gin-vue-admin/server/router/knowledgeBase"
 	"github.com/flipped-aurora/gin-vue-admin/server/router/setting"
@@ -12,6 +13,7 @@ type RouterGroup struct {
 	Example       example.RouterGroup
 	Setting       setting.RouterGroup
 	KnowledgeBase knowledgeBase.RouterGroup
+	Chat          chat.RouterGroup
 }
 
 var RouterGroupApp = new(RouterGroup)
